@@ -1,0 +1,27 @@
+const saldoInicial = parseInt(gets());
+const resultadoUltimoRound = gets();
+const custoItem = parseInt(gets());
+
+function decidirCompraOuEconomizar(saldoInicial, resultadoUltimoRound, custoItem) {
+    let novoSaldo;
+    
+    // Ajusta o saldo de acordo com o resultado do último round
+    if (resultadoUltimoRound === "ganhou") {
+        novoSaldo = saldoInicial * 1.15;
+    } else if (resultadoUltimoRound === "perdeu") {
+        novoSaldo = saldoInicial * 1.05;
+    } else if (resultadoUltimoRound === "bônus") {
+        novoSaldo = saldoInicial * 1.20;
+    }
+    
+    novoSaldo = Math.round(novoSaldo);
+    
+    // Verifica se o saldo é suficiente para comprar o item
+    if (novoSaldo >= custoItem) {
+        print("Comprar");
+    } else {
+        print("Economizar");
+    }
+}
+
+decidirCompraOuEconomizar(saldoInicial, resultadoUltimoRound, custoItem);
